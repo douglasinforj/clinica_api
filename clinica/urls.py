@@ -54,7 +54,7 @@ schema_view = get_schema_view(
 
 #rota de autenticação:
 
-from rest_framework_simplejwt import (
+from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
