@@ -33,7 +33,7 @@ router.register(r'clientes', ClienteViewSet)
 router.register(r'exames', ExameViewSet)
 router.register(r'exames-marcados', ExameMarcadoViewSet)
 
-#adicionadno Swagger ao projeto:
+#adicionando Swagger ao projeto:
 
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
@@ -73,7 +73,7 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
-    
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

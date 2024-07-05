@@ -2,7 +2,12 @@ from rest_framework import viewsets
 from clinica_app.models import Cliente, Exame, ExameMarcado
 from .serializers import ClienteSerializer, ExameSerializer, ExameMarcadoSerializer
 
+from rest_framework import generics
+
 from rest_framework.permissions import IsAuthenticated
+
+
+
 
 class ClienteViewSet(viewsets.ModelViewSet):
     queryset = Cliente.objects.all()
