@@ -15,14 +15,29 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
+#router
+from rest_framework.routers import DefaultRouter
 
+#importando as viwessets
+from clinica_app.api.viewsets import ClienteViewSet, ExameViewSet, ExameMarcadoViewSet
+
+#Arquivos de mídia
 from django.conf import settings
 from django.conf.urls.static import static
 
+#rotas
+router = DefaultRouter()
+router.register(r'clientes', ClienteViewSet)
+router.register(r'exames', ExameViewSet)
+router.register(r'exames-marcados', ExameMarcadoViewSet)
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include(router.urls))
+    
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
