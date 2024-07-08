@@ -25,8 +25,8 @@ class Exame(models.Model):
 class ExameMarcado(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     exame = models.ForeignKey(Exame, on_delete=models.CASCADE)
-    data_exame = models.DateField()
-    date_entrega_exame = models.DateField()
+    data_exame = models.DateField(blank=True, null=True)
+    date_entrega_exame = models.DateField(blank=True, null=True)
     comentarios_resultados = models.TextField(blank=True, null=True)
     preco = models.DecimalField(max_digits=10, decimal_places=2)
     documentos_exames = models.FileField(upload_to='documentos_exames/', blank=True, null=True)
