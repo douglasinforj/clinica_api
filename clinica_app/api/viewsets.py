@@ -1,15 +1,7 @@
 from rest_framework import viewsets
 from clinica_app.models import Cliente, Exame, ExameMarcado
 from .serializers import ClienteSerializer, ExameSerializer, ExameMarcadoSerializer
-
-from rest_framework import generics
-
 from rest_framework.permissions import IsAuthenticated
-
-
-from rest_framework.views import APIView
-from rest_framework.response import Response
-
 from rest_framework.parsers import MultiPartParser, FormParser
 
 
@@ -19,8 +11,9 @@ class ClienteViewSet(viewsets.ModelViewSet):
 
     permission_classes = [IsAuthenticated]
 
-    parser_classes = [MultiPartParser, FormParser]
+    parser_classes = [MultiPartParser, FormParser]         #preparando a classe para receber multipart/form-data, envio de foto
 
+    #garantindo que aceite  metodo Patch  com dados de formulários
     def partial_update(self, request, *args, **kwargs):
         kwargs['partial'] = True
         return self.update(request, *args, **kwargs)
